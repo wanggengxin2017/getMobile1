@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>检测设备及浏览器信息</title>
+</head>
+<body>
+    <script>
+        var error = document.getElementById("error");
+        if(/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+            document.write("您正在使用iPhone或iPad浏览该网页。");
+        }
+        else if(/(Android)/i.test(navigator.userAgent)) {
+            document.write("您正在使用安卓设备浏览该网页。");
+        }
+        else{
+            document.write("您正在使用PC或Mac浏览该网页。");
+        }
+
+        if(window.applicationCache) {
+            document.write("您的浏览器支持HTML5,可以访问该网页。");
+        }
+        else{
+            document.write("您的浏览器不支持运行JS脚本,请您更换浏览器!");
+            error.innerHTML = "<p>推荐使用谷歌浏览器访问该页面,请点击下方链接下载谷歌浏览器。您也可以使用当前使用的浏览器,但是其效果可能欠佳。</p>";
+            error.innerHTML = "<a href='https://www.google.cn/chrome/'>点击下载</a>";
+        }
+        if(window.ActiveXObject || "ActiveXObject" in window){
+            document.write("您的浏览器是IE，推荐您更换谷歌浏览器!");
+            error.innerHTML = "<p>请点击下方链接下载谷歌浏览器。您也可以允许IE运行JS脚本,但是其效果可能欠佳。</p>";
+            error.innerHTML = "<a href='https://www.google.cn/chrome/'>点击下载</a>";
+        }
+
+        console.log("by Chris_wang");
+    </script>
+    <noscript>
+        <p>您的浏览器不支持运行JS脚本,请更换浏览器!</p>
+        <p>推荐使用谷歌浏览器访问该页面,请点击下方链接下载谷歌浏览器。您也可以使用当前使用的浏览器,但是其效果可能欠佳。</p>
+        <a href='https://www.google.cn/chrome/'>点击下载</a>
+    </noscript>
+    <p id="error">&nbsp;&nbsp;</p>
+</body>
+</html>
